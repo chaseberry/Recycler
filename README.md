@@ -1,2 +1,2 @@
-TODO,
-I'll get around to this eventually, I swear.
+A simple Object Recycler for java. 
+Look at the Point and Test files for examples on usage.
