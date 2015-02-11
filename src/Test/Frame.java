@@ -3,20 +3,30 @@ package Test;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-/**
- * Created by chase on 2/11/15.
- */
+
 public class Frame extends JFrame {
 
     ArrayList<FrameObject> objects = new ArrayList<FrameObject>();
-
+    Timer timer;
 
     public Frame() {
         setSize(500, 500);
         setVisible(true);
         setLocation(40, 40);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                for (FrameObject obj : objects) {
+                    obj.tick();
+                }
+                repaint();
+            }
+        }, 20, 20);
     }
 
     @Override
