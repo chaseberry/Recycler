@@ -39,7 +39,6 @@ public class Square extends FrameObject {
 
     @Override
     public void onRecycle(Object... args) {
-        super.onRecycle(args);
         setImg(Integer.parseInt(String.valueOf(args[0])));
         this.x = Integer.parseInt(String.valueOf(args[1]));
         this.y = Integer.parseInt(String.valueOf(args[2]));

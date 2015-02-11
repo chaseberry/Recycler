@@ -4,7 +4,7 @@ import Recycler.Recyclable;
 
 import java.awt.image.BufferedImage;
 
-public abstract class FrameObject extends Recyclable {
+public abstract class FrameObject implements Recyclable {
 
     protected int x, y;
 

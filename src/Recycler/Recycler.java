@@ -1,25 +1,11 @@
 package Recycler;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Recycler<RecyclableObject extends Recyclable> {
 
-    public static final int MIN_RECYCLABLES = 100;
-
-    private ArrayList<RecyclableObject> recyclables;
+    private LinkedList<RecyclableObject> recyclables;
     private Class recyclableClass;
-
-    /**
-     * Create a Recycler.Recycler with given min number and the given class
-     * This class is used to create a new object if none are present to recycle.
-     *
-     * @param minRecyclables
-     * @param cls
-     */
-    public Recycler(int minRecyclables, Class cls) {
-        recyclables = new ArrayList<RecyclableObject>(minRecyclables);
-        recyclableClass = cls;
-    }
 
     /**
      * Creates a Recycler.Recycler with MIN_RECYCLABLES and the given class.
@@ -28,17 +14,12 @@ public class Recycler<RecyclableObject extends Recyclable> {
      * @param cls The class of the Object to Recycle. Must have a blank default constructor
      */
     public Recycler(Class cls) {
-        this(MIN_RECYCLABLES, cls);
+        recyclables = new LinkedList<RecyclableObject>();
+        recyclableClass = cls;
     }
 
-    /**
-     * Adds an object to this Recycler.Recycler to be tracked.
-     * Useful for creating an object with a constructor.
-     *
-     * @param obj The object to track
-     */
-    public void trackRecyclable(RecyclableObject obj) {
-        recyclables.add(obj);
+    public void recycle(RecyclableObject obj) {
+        recyclables.push(obj);
     }
 
     /**
@@ -60,11 +41,10 @@ public class Recycler<RecyclableObject extends Recyclable> {
      * @return An object that was recycled or newly created, or null if no default constructor was found
      */
     public RecyclableObject getRecyclable(Class cls, Object... args) {
-        for (RecyclableObject r : recyclables) {
-            if (r.isSafeToRecycle()) {
-                r.onRecycle(args);
-                return r;
-            }
+        if (!recyclables.isEmpty()) {
+            RecyclableObject obj = recyclables.pop();
+            obj.onRecycle(args);
+            return obj;
         }
         try {
             RecyclableObject obj = (RecyclableObject) cls.newInstance();

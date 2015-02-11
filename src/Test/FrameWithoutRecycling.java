@@ -36,7 +36,6 @@ public class FrameWithoutRecycling extends JFrame {
                 for (int z = 0; z < objects.size(); z++) {
                     objects.get(z).tick();
                     if (objects.get(z).getY() > getHeight()) {
-                        objects.get(z).setToRecycle();
                         objects.remove(z);
                         if (objectsAdded < 10) {
                             objects.add(new Square(r.nextInt(50), r.nextInt(500), r.nextInt(50)));
