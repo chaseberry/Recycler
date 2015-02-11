@@ -1,3 +1,5 @@
+package Recycler;
+
 import java.util.ArrayList;
 
 public class Recycler<RecyclableObject extends Recyclable> {
@@ -8,7 +10,7 @@ public class Recycler<RecyclableObject extends Recyclable> {
     private Class recyclableClass;
 
     /**
-     * Create a Recycler with given min number and the given class
+     * Create a Recycler.Recycler with given min number and the given class
      * This class is used to create a new object if none are present to recycle.
      *
      * @param minRecyclables
@@ -20,7 +22,7 @@ public class Recycler<RecyclableObject extends Recyclable> {
     }
 
     /**
-     * Creates a Recycler with MIN_RECYCLABLES and the given class.
+     * Creates a Recycler.Recycler with MIN_RECYCLABLES and the given class.
      * This class is used to create a new object if none are present to recycle.
      *
      * @param cls The class of the Object to Recycle. Must have a blank default constructor
@@ -30,7 +32,7 @@ public class Recycler<RecyclableObject extends Recyclable> {
     }
 
     /**
-     * Adds an object to this Recycler to be tracked.
+     * Adds an object to this Recycler.Recycler to be tracked.
      * Useful for creating an object with a constructor.
      *
      * @param obj The object to track

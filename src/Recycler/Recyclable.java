@@ -1,11 +1,13 @@
+package Recycler;
+
 public abstract class Recyclable {
 
     private boolean safeToRecycle = false;
 
     /**
-     * Tells the Recycler watching this object that it can recycle this.
+     * Tells the Recycler.Recycler watching this object that it can recycle this.
      */
-    protected void setToRecycle() {
+    public void setToRecycle() {
         safeToRecycle = true;
     }
 
