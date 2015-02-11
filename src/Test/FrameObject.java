@@ -4,9 +4,6 @@ import Recycler.Recyclable;
 
 import java.awt.image.BufferedImage;
 
-/**
- * Created by chase on 2/11/15.
- */
 public abstract class FrameObject extends Recyclable {
 
     protected int x, y;
@@ -14,6 +11,10 @@ public abstract class FrameObject extends Recyclable {
     public FrameObject(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public FrameObject() {
+        this(0, 0);
     }
 
     public abstract void tick();

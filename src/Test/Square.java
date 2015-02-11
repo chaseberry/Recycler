@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 public class Square extends FrameObject {
 
     private BufferedImage img;
-    private int size;
 
     public Square(int size) {
         this(size, 0, 0);
@@ -14,15 +13,19 @@ public class Square extends FrameObject {
 
     public Square(int size, int x, int y) {
         super(x, y);
-        this.size = size;
-        img = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
+        setImg(size);
+    }
+
+    private void setImg(int size) {
+        img = new BufferedImage(size + 1, size + 1, BufferedImage.TYPE_INT_ARGB);
         Graphics graphics = img.getGraphics();
-        graphics.drawRect(0, 0, size, size);
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0, 0, size, size);
     }
 
     @Override
     public void tick() {
-        y += 1;
+        y += 2;
     }
 
     @Override
@@ -33,7 +36,9 @@ public class Square extends FrameObject {
     @Override
     public void onRecycle(Object... args) {
         super.onRecycle(args);
-
+        setImg(Integer.parseInt(String.valueOf(args[0])));
+        this.x = Integer.parseInt(String.valueOf(args[1]));
+        this.y = Integer.parseInt(String.valueOf(args[2]));
     }
 
 }
