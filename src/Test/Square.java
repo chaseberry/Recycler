@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 public class Square extends FrameObject {
 
-    private int x, y;
     private BufferedImage img;
     private int size;
 
@@ -14,20 +13,11 @@ public class Square extends FrameObject {
     }
 
     public Square(int size, int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.size = size;
         img = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
         Graphics graphics = img.getGraphics();
         graphics.drawRect(0, 0, size, size);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 
     @Override
