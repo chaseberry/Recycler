@@ -48,13 +48,13 @@ public class Recycler<RecyclableObject extends Recyclable> {
     public RecyclableObject getRecyclable(Object... args) {
         for (RecyclableObject r : recyclables) {
             if (r.isSafeToRecycle()) {
-                r.recycle(args);
+                r.onRecycle(args);
                 return r;
             }
         }
         try {
             RecyclableObject obj = (RecyclableObject) recyclableClass.newInstance();
-            obj.recycle(args);
+            obj.onRecycle(args);
             recyclables.add(obj);
             return obj;
         } catch (Exception e) {

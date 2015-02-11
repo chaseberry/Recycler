@@ -13,7 +13,7 @@ public abstract class Recyclable {
         return safeToRecycle;
     }
 
-    public void recycle(Object... args) {
+    public void onRecycle(Object... args) {
         safeToRecycle = false;
     }
 

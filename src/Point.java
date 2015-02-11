@@ -36,8 +36,8 @@ public class Point extends Recyclable {
     }
 
     @Override
-    public void recycle(Object... args) {
-        super.recycle(args);
+    public void onRecycle(Object... args) {
+        super.onRecycle(args);
         this.x = Integer.parseInt(String.valueOf(args[0]));
         this.y = Integer.parseInt(String.valueOf(args[1]));
     }
