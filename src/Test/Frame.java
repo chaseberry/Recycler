@@ -43,11 +43,14 @@ public class Frame extends JFrame {
                         objects.get(z).setToRecycle();
                         objects.remove(z);
                         if (objectsAdded < 10) {
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class, r.nextInt(50), r.nextInt(500), 0));
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class, r.nextInt(50), r.nextInt(500), 0));
+                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                                    r.nextInt(50), r.nextInt(500), r.nextInt(50)));
+                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                                    r.nextInt(50), r.nextInt(500), r.nextInt(50)));
                             objectsAdded++;
                         } else {
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class, r.nextInt(50), r.nextInt(500), 0));
+                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                                    r.nextInt(50), r.nextInt(500), r.nextInt(50)));
                         }
                     }
                 }
