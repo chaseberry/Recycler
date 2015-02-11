@@ -67,7 +67,7 @@ public class Recycler<RecyclableObject extends Recyclable> {
             }
         }
         try {
-            RecyclableObject obj = (RecyclableObject) recyclableClass.newInstance();
+            RecyclableObject obj = (RecyclableObject) cls.newInstance();
             obj.onRecycle(args);
             recyclables.add(obj);
             return obj;
