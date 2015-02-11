@@ -7,6 +7,10 @@ public class Square extends FrameObject {
 
     private BufferedImage img;
 
+    public Square() {
+        this(10);
+    }
+
     public Square(int size) {
         this(size, 0, 0);
     }
