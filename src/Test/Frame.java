@@ -24,7 +24,7 @@ public class Frame extends JFrame {
         setSize(500, 500);
         setVisible(true);
         setLocation(40, 40);
-
+        setTitle("Recycling");
         for (int z = 0; z < 5; z++) {
             Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 10);
             objects.add(sq);
