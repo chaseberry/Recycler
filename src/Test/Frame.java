@@ -1,17 +1,29 @@
 package Test;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by chase on 2/11/15.
  */
 public class Frame extends JFrame {
 
+    ArrayList<FrameObject> objects;
+
+
+
     public Frame() {
         setSize(500, 500);
         setVisible(true);
         setLocation(40, 40);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+
     }
 
     public static void main(String[] args) {
