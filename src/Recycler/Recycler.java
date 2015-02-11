@@ -48,6 +48,18 @@ public class Recycler<RecyclableObject extends Recyclable> {
      * @return An object that was recycled or newly created, or null if no default constructor was found
      */
     public RecyclableObject getRecyclable(Object... args) {
+        return getRecyclable(recyclableClass, args);
+    }
+
+    /**
+     * Gets a recycled object if present, or will create and return a new one.
+     *
+     * @param cls  The class of the Object to Recycle. Must have a blank default constructor
+     *             Use this method if you want to create a child class of some parent
+     * @param args Arguments passed to the objects onRecycle method to re-init with data.
+     * @return An object that was recycled or newly created, or null if no default constructor was found
+     */
+    public RecyclableObject getRecyclable(Class cls, Object... args) {
         for (RecyclableObject r : recyclables) {
             if (r.isSafeToRecycle()) {
                 r.onRecycle(args);
