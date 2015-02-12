@@ -5,7 +5,7 @@ import Recycler.Recyclable;
 /**
  * Created by chase on 2/11/15.
  */
-public class Point extends Recyclable {
+public class Point implements Recyclable {
 
     private int x = 0, y = 0;
 
@@ -41,7 +41,6 @@ public class Point extends Recyclable {
 
     @Override
     public void onRecycle(Object... args) {
-        super.onRecycle(args);
         this.x = Integer.parseInt(String.valueOf(args[0]));
         this.y = Integer.parseInt(String.valueOf(args[1]));
     }
