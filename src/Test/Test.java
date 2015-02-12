@@ -24,6 +24,8 @@ public class Test {
         System.out.println("p3 address: " + p3.hashCode());
 
         System.out.println("p1: " + p1);
+        new Frame();
+        new FrameWithoutRecycling();
     }
 
 }

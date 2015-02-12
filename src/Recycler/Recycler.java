@@ -49,7 +49,6 @@ public class Recycler<RecyclableObject extends Recyclable> {
         try {
             RecyclableObject obj = (RecyclableObject) cls.newInstance();
             obj.onRecycle(args);
-            recyclables.add(obj);
             return obj;
         } catch (Exception e) {
             e.printStackTrace();

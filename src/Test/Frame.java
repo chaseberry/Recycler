@@ -4,6 +4,7 @@ import Recycler.Recycler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -26,7 +27,7 @@ public class Frame extends JFrame {
         setLocation(40, 40);
         setTitle("Recycling");
         for (int z = 0; z < 5; z++) {
-            Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 10);
+            Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 40);
             objects.add(sq);
         }
         objectsAdded = 5;
@@ -39,8 +40,7 @@ public class Frame extends JFrame {
                 for (int z = 0; z < objects.size(); z++) {
                     objects.get(z).tick();
                     if (objects.get(z).getY() > getHeight()) {
-                        frameObjectRecycler.recycle(objects.get(z));
-                        objects.remove(z);
+                        frameObjectRecycler.recycle(objects.remove(z));
                         if (objectsAdded < 10) {
                             objects.add(frameObjectRecycler.getRecyclable(Square.class,
                                     r.nextInt(50), r.nextInt(500), r.nextInt(50)));
@@ -68,9 +68,12 @@ public class Frame extends JFrame {
     public void paint(Graphics g) {
         //super.paint(g);
         g.clearRect(0, 0, getWidth(), getHeight());
+        BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics drawing = img.getGraphics();
         for (FrameObject obj : objects) {
-            g.drawImage(obj.getImage(), obj.getX(), obj.getY(), null);
+            drawing.drawImage(obj.getImage(), obj.getX(), obj.getY(), null);
         }
+        g.drawImage(img, 0, 0, null);
     }
 
     public static void main(String[] args) {

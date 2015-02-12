@@ -2,6 +2,7 @@ package Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
@@ -23,7 +24,7 @@ public class FrameWithoutRecycling extends JFrame {
         setLocation(40, 40);
         setTitle("No Recycling");
         for (int z = 0; z < 5; z++) {
-            Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 10);
+            Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 40);
             objects.add(sq);
         }
         objectsAdded = 5;
@@ -61,9 +62,12 @@ public class FrameWithoutRecycling extends JFrame {
     public void paint(Graphics g) {
         //super.paint(g);
         g.clearRect(0, 0, getWidth(), getHeight());
+        BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics drawing = img.getGraphics();
         for (FrameObject obj : objects) {
-            g.drawImage(obj.getImage(), obj.getX(), obj.getY(), null);
+            drawing.drawImage(obj.getImage(), obj.getX(), obj.getY(), null);
         }
+        g.drawImage(img, 0, 0, null);
     }
 
     public static void main(String[] args) {
