@@ -27,7 +27,7 @@ public class Frame extends JFrame {
         setLocation(40, 40);
         setTitle("Recycling");
         for (int z = 0; z < 5; z++) {
-            Square sq = new Square(4 * (z + 1), 50 * (z + 1), z * 40);
+            Square sq = new ColoredSquare(4 * (z + 1), 50 * (z + 1), z * 40);
             objects.add(sq);
         }
         objectsAdded = 5;
@@ -41,14 +41,14 @@ public class Frame extends JFrame {
                     objects.get(z).tick();
                     if (objects.get(z).getY() > getHeight()) {
                         frameObjectRecycler.recycle(objects.remove(z));
-                        if (objectsAdded < 10) {
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                        if (objectsAdded < 100) {
+                            objects.add(frameObjectRecycler.getRecyclable(ColoredSquare.class,
                                     r.nextInt(50), r.nextInt(500), r.nextInt(50)));
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                            objects.add(frameObjectRecycler.getRecyclable(ColoredSquare.class,
                                     r.nextInt(50), r.nextInt(500), r.nextInt(50)));
                             objectsAdded++;
                         } else {
-                            objects.add(frameObjectRecycler.getRecyclable(Square.class,
+                            objects.add(frameObjectRecycler.getRecyclable(ColoredSquare.class,
                                     r.nextInt(50), r.nextInt(500), r.nextInt(50)));
                         }
                     }

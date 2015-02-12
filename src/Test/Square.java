@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class Square extends FrameObject {
 
-    private BufferedImage img;
+    protected BufferedImage img;
 
     public Square() {
         this(10);
@@ -20,7 +20,7 @@ public class Square extends FrameObject {
         setImg(size);
     }
 
-    private void setImg(int size) {
+    protected void setImg(int size) {
         img = new BufferedImage(size + 1, size + 1, BufferedImage.TYPE_INT_ARGB);
         Graphics graphics = img.getGraphics();
         graphics.setColor(Color.BLACK);
